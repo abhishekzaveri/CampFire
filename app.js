@@ -15,8 +15,10 @@ var express = require("express"),
 var commentRoutes = require("./routes/comments"),
     campgroundRoutes = require("./routes/campgrounds"), 
     indexRoutes = require("./routes/index"); 
+    
+var url = process.env.DATABASEURL || "mongodb://localhost/camp_fire";
+mongoose.connect(url); 
 
-mongoose.connect(process.env.DATABASEURL); 
 
 app.set("view engine", "ejs"); 
 app.use(bodyParser.urlencoded({extended:true})); 
